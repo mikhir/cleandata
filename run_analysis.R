@@ -36,5 +36,9 @@ fullset_y <- sapply(fullset_y, function(x) activities[x])
 fullset$subject <- fullset_subject
 fullset$activity <- fullset_y
 
-# output fullset
-fullset
+# group by activity and subject
+grouped <- group_by(fullset, subject, activity)
+
+# summarise with mean for all columns
+summarise_each(grouped, funs(mean))
+
